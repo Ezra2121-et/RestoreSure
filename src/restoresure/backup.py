@@ -228,6 +228,7 @@ def run_restore_drill(config_path: Path, job_name: str) -> int:
                 "restic",
                 "-r", str(repository),
                 "restore", "latest",
+                "--path", str(source),
                 "--target", str(target),
             ]
 

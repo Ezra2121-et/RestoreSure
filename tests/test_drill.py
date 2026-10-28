@@ -65,6 +65,19 @@ class RestoreDrillTests(unittest.TestCase):
         self.assertEqual(result, 1)
 
     @patch("restoresure.backup.subprocess.run")
+    def test_restore_is_limited_to_configured_source_path(self, mock_run):
+        mock_run.side_effect = self.simulate_restore
+
+        result = run_restore_drill(self.config, "documents")
+
+        self.assertEqual(result, 0)
+        command = mock_run.call_args.args[0]
+        self.assertIn("--path", command)
+        self.assertIn(str(self.source), command)
+        self.assertEqual(command[command.index("--path") + 1], str(self.source))
+
+
+    @patch("restoresure.backup.subprocess.run")
     def test_restic_failure_fails_drill(self, mock_run):
         mock_run.return_value = Mock(returncode=1)
 
