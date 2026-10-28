@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+.venv/
+.env
+config/restoresure.toml
+*.db
+*.sqlite3
+
+# Generated package metadata
+src/*.egg-info/

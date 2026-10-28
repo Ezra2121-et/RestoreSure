@@ -1,0 +1,12 @@
+# Example only. No backup jobs run from this file.
+# Copy this to restoresure.toml when we are ready to configure jobs.
+
+jobs = []
+
+# Example job syntax:
+#
+# [[jobs]]
+# name = "documents"
+# source = "/home/your-user/Documents"
+# repository = "/path/to/backup-repository"
+# schedule = "daily"
